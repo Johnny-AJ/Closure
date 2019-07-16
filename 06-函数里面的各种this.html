@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+<script>
+/*
+  想要使用  call/apply/bind 三个借用 ，必然会把this改变
+    必须先知道 函数里面的 this 是什么， 才知道是否需要修改
+
+
+  研究 函数里面的this
+    普通函数 - window对象
+    构造函数 - 实例对象
+    事件处理程序 - 事件源
+    回调函数 
+      定时器的回调函数 ，this -> window
+      数组的foreach里面的 this -> window
+    对象的方法(原型的方法)
+      谁调用，this就是谁    this指向实例对象
+    箭头函数
+      里面的this 指向 上级作用域的this
+*/
+
+// 普通函数里的this
+// function fn(){
+//   console.log(this);
+// }
+// fn();
+
+// 构造函数里面的this
+// function Person(name,age){
+//   this.name = name;
+//   this.age = age;
+//   console.log(this);
+// }
+// let p1 = new Person('狗蛋',12);
+// console.log(p1);
+
+// 事件处理程序里面的this
+// let box = document.querySelector('.box');
+// box.onc    lick = function(){
+//   console.log(this);
+// }
+
+// box.addEventListener('click',function(){
+//   console.log(this);
+// })
+
+
+// 定时器的回调函数里面的this
+// setInterval(function(){
+//   console.log(this);
+// },1000);
+
+
+// let arr = [1,23,3,45,6];
+// arr.forEach(function(){
+//   console.log(this);
+// })
+
+
+// 对象的方法里面的this
+// 此时obj是由 Object  new的
+// let obj = {
+//   name : '狗蛋',
+//   sayHi : function(){
+//     console.log(this);
+//   }
+// }
+// obj.sayHi();
+// console.log(obj instanceof Object);
+
+// function Person(name,age){
+//   this.name = name;
+//   this.age = age;
+// }
+// Person.prototype.sayHi = function(){
+//   console.log(this);
+// }
+// let p1 = new Person('翠花',14);
+// p1.sayHi();
+
+
+// 箭头函数
+// let a = ()=>{
+//   console.log(this);
+// }
+// console.log(this);// 这是唯一一个不在函数里面的this
+// a();
+
+// let obj = {
+//   name : '狗蛋',
+//   sayHi : function(){
+
+//     let b = ()=>{
+//       console.log(this);
+//     }
+//     b();
+//   }
+// }
+
+// obj.sayHi();
+
+
+</script>
+</html>

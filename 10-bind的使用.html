@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+/*
+  bind的使用
+
+    作用：
+      1.修改this，把函数的副本返回
+
+    用法：
+      函数.bind(新this,参数1,参数2,参数3....);
+
+    返回值：
+      被借用的函数的副本 - 复制了一份
+
+*/
+
+function fn(a,b,c){
+  console.log(this);
+  console.log(a,b,c);
+}
+fn();//this是window
+// bind借用
+let obj = { name : '狗蛋'}
+let res = fn.bind(obj,10,20,30);
+console.log(res);
+res();
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+/*
+  call的作用：
+    1.调用函数
+    2.修改this
+
+  call的用法
+    函数名.call(新this,参数1,参数2...)
+*/
+
+function fn(a,b,c){
+  console.log(this);
+  console.log(a + b +c);
+  return a + b + c;
+}
+
+fn(); // 正常的使用 this 是 window
+// 采用call的方式
+let obj = {
+  name : '狗蛋',
+  age : 12
+};
+let res = fn.call(obj,10,20,30);
+// console.log(res);
+</script>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+/*
+
+  证明了函数也是对象
+    1. 看到函数其实就是键值对的集合
+    2. instanceof 发现 所有的函数都是  Function 的实例对象
+
+  函数是对象
+    就可以调用方法
+    也会有原型对象
+
+      几乎所有的方法，都是来自于某个对象的原型对象的
+    
+    函数的原型
+      Function.prototype
+        call
+        apply
+        bind
+  
+  借用
+    别人封装好的代码，我们如果想要拿过来使用 —— 借用
+
+      借用构造函数实现属性的继承
+      借用foreach遍历伪数组
+      借用slice把伪数组转换为数组
+
+    目的(作用)
+      代码的重复使用
+        继承 - 封装代码的时候使用
+        借用 - 调用的时候使用
+
+    怎么用？
+
+      函数名.call(新this,参数1，参数2，参数3...)
+
+
+*/
+
+// 借用构造函数实现继承
+// function Person(name,age,gender){
+//   this.name = name;
+//   this.age = age;
+//   this.gender = gender;
+// }
+// function Student(name,age,gender){
+//   Person.call(this,name,age,gener);
+// }
+
+// // 借用foreach遍历伪数组
+// let lis = document.getElementsByTagName('li');
+// // lis是一个HTMLCollection 对象，是不能使用foreach遍历的
+// Array.prototype.forEach.call(lis,function(e,i){
+//   console.log(e);
+// });
+
+// //借用slice 把伪数组转换为数组
+// let lis = document.querySelectorAll('li');
+// let arr = Array.prototype.slice(lis,0);
+// 伪数组 ： 伪数组的本质 ： 以数字为键的对象，对象有一个长度属性
+
+// let obj = {
+//   0 : 'a',
+//   1 : 'b',
+//   2 : 'c',
+//   length : 3,
+//   name : '狗蛋'
+// }
+// // 把伪数组转换为数组的过程
+// let arr = [];
+// for(let i =0; i < obj.length; i++){
+//   arr[i] = obj[i];
+// }
+// arr.length = obj.length;
+// console.log(arr);
+
+// let arr = [1,2,3,4];
+// arr.name = '狗蛋';
+// console.log(arr);
+</script>
+</html>

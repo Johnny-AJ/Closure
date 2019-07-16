@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+<div class="box">1</div>
+<div class="box">2</div>
+</body>
+<script>
+  ; (function () {
+
+    function Init(selector) {
+      // 构建一个伪数组
+      let dom = document.querySelectorAll(selector);
+      for (let i = 0; i < dom.length; i++) {
+        this[i] = dom[i]
+      }
+      this.length = dom.length;
+    }
+
+    Init.prototype.each = function (callback) {
+      for (let i = 0; i < this.length; i++) {
+        callback(i, this[i]);
+      }
+    }
+
+    Init.prototype.css = function (property, value) {
+      if (value != undefined) {
+        // 如果传递了两个参数，就是修改样式
+        this.each(
+        /* 我们还可以在回调函数的外面，使用bind把内部的this修改 */
+          (function(i,e){
+          // console.log(this);
+          this[i].style[property] = value;
+        }).bind(this)
+
+        );
+      }
+    }
+
+    function jQuery(selector) {
+      return new Init(selector);
+    }
+
+    window.$ = jQuery;
+
+  })();
+
+  let box = $('.box');
+  box.css('color','red');
+
+
+
+
+</script>
+
+</html>

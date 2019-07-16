@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>apply</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 1/
+    // function fn(a, b, c) {
+    //     console.log(this);
+    //     console.log(a, b, c);
+    //     return a + b + c;
+    // }
+    // fn();
+    // let obj = {
+    //     name: '骚猪'
+    // }
+    // let res = fn.apply(obj, [12, 34, 56]);
+    // console.log(res);
+
+    // 2/
+    // function Pesson(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    // }
+    // function Student(name, age) {
+    //     Pesson.apply(this, [name, age])
+    // }
+    // let s1 = new Student('骚猪', 21);
+    // console.log(s1);
+
+    // 3/
+    let arr = [23, 5235, 36436, 7455, 3524, 5274, 5234];
+    // let max = arr[0];
+    // for (let i = 1; i < arr.length; i++) {
+    //     if (max < arr[i]) {
+    //         max = arr[i];
+    //     }
+    // }
+    // console.log(max);
+
+    // 4/
+    // Math.max()
+    // let max = Math.max(4332, 73537, 64523, 86456, 76567, 5422);
+    // console.log(max);
+
+    // 5/
+    // function max() {
+    //     let m = arguments[0];
+    //     for (let i = 1; i < arguments.length; i++) {
+    //         if (m < arguments[i]) {
+    //             m = arguments[i];
+    //         }
+    //     }
+    //     return m;
+    // }
+
+    // 6/
+    // Math.max里面的是和this无关,此时this是谁都可以
+    // 只需把数组传递给Math.max即可
+    // let max = Math.max.apply(null, arr);
+    // console.log(max);
+
+</script>
+
+</html>

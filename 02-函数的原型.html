@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /*
+    区分函数到底是以什么身份出现
+      我们发现 函数  的身上 同时具备  prototype 和  __proto__ 两个属性
+      构造函数和普通的函数有没有区别？
+        注意：
+          其实构造函数和普通函数是没有区别，只不过我们人为的约定了 我们在定义构造函数的时候，需要以大写开头来区分
+    当我们研究原型的时候，要区分函数是以什么角色来出现
+      如果我们把函数当成对象的构造函数来使用， 就访问 prototype 属性
+      如果把函数当成是 Function 的实例对象来使用， 就访问 __proto__
+  */
+
+  // function fn(a,b){
+  //   return a + b;
+  // }
+
+  // console.dir(fn);
+  // let f= new fn();
+  // console.log(f);
+
+
+
+  // 研究函数的原型
+  // console.dir(fn);
+  // 函数的__proto__ 身上有一个call的方法
+  // call的使用   函数名.call()
+  // 要研究函数的原型有哪些方法需要学习
+  // console.log(Function.prototype);
+  // console.log(fn.__proto__);
+  // 因为js是不开源的，我们输出原生代码是看不见的
+
+  // console.dir(Function.prototype);
+  // 继续跟之前一样研究一家三口
+  let fn = new Function('a', 'b', 'return a + b;');
+  // console.log(fn.__proto__ === Function.prototype);
+  // console.log(Function.prototype.constructor === Function);
+  console.dir(Function.prototype);
+  console.dir(Function.prototype.__proto__);
+  console.log(Function.prototype.__proto__ === Object.prototype);
+  console.log(Function.prototype.__proto__.__proto__);
+</script>
+
+</html>

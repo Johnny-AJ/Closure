@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 900px;
+            margin: 50px auto;
+            display: flex;
+        }
+
+        .cell {
+            flex: 1;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .contain {
+            min-height: 400px;
+        }
+
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="cell">
+            <div class="contain">
+                <img src="../../../../微信图片/小樱.jpg" alt="">
+            </div>
+            <input type="button" value="喜欢(0)">
+        </div>
+        <div class="cell">
+            <div class="contain">
+                <img src="../../../../微信图片/微信图片_20190629191749.jpg" alt="">
+            </div>
+            <input type="button" value="喜欢(0)">
+        </div>
+        <div class="cell">
+            <div class="contain">
+                <img src="../../../../微信图片/微信图片_20190705134459.jpg  " alt="">
+            </div>
+            <input type="button" value="喜欢(0)">
+        </div>
+    </div>
+</body>
+<script>
+    // 使用闭包定义
+    // 定义一个外层函数
+    function fn1() {
+        // 定义一个内层函数，操作票数
+        let tickes = 0;
+        // 定义一个内层函数
+        function fn2() {
+            this.value = '喜欢(' + ++tickes + ')';
+        }
+        // 内层函数作为外层函数的返回值
+        return fn2;
+    }
+
+    // 点击一次，票数增加一次
+    let btns = document.querySelectorAll('input');
+    btns.forEach(e => {
+        e.onclick = fn1();
+    })
+</script>
+
+</html>

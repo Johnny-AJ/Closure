@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+/*
+  证明函数也是对象
+    前天，学习  call
+     函数名.call()
+
+  1. 直接使用console.dir(函数);
+    如果输出了键值对，就可以证明函数也是对象 - 确实是键值对的集合
+  2. 判断 函数 是否是另一个构造函数的实例 - 是！！
+*/
+
+// function fn(){
+
+// }
+
+// console.dir(fn);
+
+/*
+  创建函数的方式：
+    1. 关键字声明
+      function 函数名(){}
+    2. 函数表达式
+      var 变量名 = function(){}
+
+    其实以上的两个语法是js里面对于声明函数的语法糖
+      语法糖 —— 更加简单更加好用的语法，本质不是这样的
+  js里面最本质的创建函数的方式：
+    var 函数名 = new Function(参数1,参数2,...,函数体)
+
+    发现所有的函数其实都是 Function 的实例对象
+*/
+
+// function getSum(a,b){
+//   return a + b;
+// }
+
+// console.log(getSum(10,20));
+
+// 使用构造函数的方式创建函数
+// let getSum = new Function('a','b','return a + b;');
+// console.log(getSum(10,20));
+
+// 证明所有的函数都是 Function 构造函数的实例对象
+// instanceof - 判断实例对象是否由该构造函数所创建
+function fn(){}
+console.log(fn instanceof Function);
+let fn2 = function(){}
+console.log(fn2 instanceof Function);
+</script>
+</html>

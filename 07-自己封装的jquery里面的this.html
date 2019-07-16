@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+<div class="box">1</div>
+<div class="box">2</div>
+</body>
+<script>
+  ; (function () {
+
+    function Init(selector) {
+      // 构建一个伪数组
+      let dom = document.querySelectorAll(selector);
+      for (let i = 0; i < dom.length; i++) {
+        this[i] = dom[i]
+      }
+      this.length = dom.length;
+    }
+
+    Init.prototype.each = function (callback) {
+      for (let i = 0; i < this.length; i++) {
+        callback(i, this[i]);
+
+        // 解决回调函数里面的this，可以使用call来修改this指向
+        // callback.call(this,i,this[i]);
+      }
+    }
+
+    Init.prototype.css = function (property, value) {
+      if (value != undefined) {
+        // 设置样式操作
+        this.each(function (i, e) {
+          // console.log(this); // 此时是回调函数，this指向window，就不能使用this了
+          e.style[property] = value;
+        });
+
+        // 箭头函数的this指向上级作用域，this是伪数组，是可以使用的
+        // this.each((i,e)=>{
+        //   console.log(this);
+        // })
+
+        // 如果each方法里面的callback使用了call借用，回调函数里面的this就依赖于借用的this
+        // this.each(function(){
+        //   console.log(this);
+        // })
+      }
+    }
+
+    function jQuery(selector) {
+      return new Init(selector);
+    }
+
+    window.$ = jQuery;
+
+  })();
+
+  let box = $('.box');
+  box.css('color','red');
+
+
+
+
+</script>
+
+</html>
